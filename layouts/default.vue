@@ -8,7 +8,8 @@
             Form/1-plain-html
         </NuxtLink>
         |
-        <NuxtLink class="link" :class="{ current: $route.path === '/form/2-vue-components' }" to="/form/2-vue-components">
+        <NuxtLink class="link" :class="{ current: $route.path === '/form/2-vue-components' }"
+            to="/form/2-vue-components">
             Form/2-vue-components
         </NuxtLink>
         |
@@ -16,14 +17,24 @@
             Form/3-vee-validate
         </NuxtLink>
         |
-        <NuxtLink class="link" :class="{ current: $route.path === '/form/4-vee-validate-with-yup' }" to="/form/4-vee-validate-with-yup">
+        <NuxtLink class="link" :class="{ current: $route.path === '/form/4-vee-validate-with-yup' }"
+            to="/form/4-vee-validate-with-yup">
             Form/4-vee-validate-with-yup
         </NuxtLink>
         |
-        <NuxtLink class="link" :class="{ current: $route.path === '/form/lazy-validation-login' }" to="/form/lazy-validation-login">
+        <NuxtLink class="link" :class="{ current: $route.path === '/form/lazy-validation-login' }"
+            to="/form/lazy-validation-login">
             Form/lazy-validation-login
         </NuxtLink>
     </nav>
+
+    <pre>
+        TODO:
+            - remove features/SetupFormComponent 
+            - convert all form components into TypeScript setup
+            - test pinia session storage
+            - test server
+    </pre>
 
     <div class="layout">
         <slot />
