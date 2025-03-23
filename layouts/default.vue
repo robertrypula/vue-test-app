@@ -4,16 +4,24 @@
             Home
         </NuxtLink>
         |
-        <NuxtLink class="link" :class="{ current: $route.path === '/form/components' }" to="/form/components">
-            Form/components
+        <NuxtLink class="link" :class="{ current: $route.path === '/form/1-plain-html' }" to="/form/1-plain-html">
+            Form/1-plain-html
         </NuxtLink>
         |
-        <NuxtLink class="link" :class="{ current: $route.path === '/form/login' }" to="/form/login">
-            Form/login
+        <NuxtLink class="link" :class="{ current: $route.path === '/form/2-vue-components' }" to="/form/2-vue-components">
+            Form/2-vue-components
         </NuxtLink>
         |
-        <NuxtLink class="link" :class="{ current: $route.path === '/form/simple' }" to="/form/simple">
-            Form/simple
+        <NuxtLink class="link" :class="{ current: $route.path === '/form/3-vee-validate' }" to="/form/3-vee-validate">
+            Form/3-vee-validate
+        </NuxtLink>
+        |
+        <NuxtLink class="link" :class="{ current: $route.path === '/form/4-vee-validate-with-yup' }" to="/form/4-vee-validate-with-yup">
+            Form/4-vee-validate-with-yup
+        </NuxtLink>
+        |
+        <NuxtLink class="link" :class="{ current: $route.path === '/form/lazy-validation-login' }" to="/form/lazy-validation-login">
+            Form/lazy-validation-login
         </NuxtLink>
     </nav>
 
@@ -22,7 +30,7 @@
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .layout {
     margin: 32px auto;
     max-width: 100%;
@@ -31,7 +39,12 @@
     padding: 32px;
 }
 
-.nav .current {
-    font-weight: bold;
+.nav {
+    color: lightgray;
+
+    .current {
+        font-weight: bold;
+        color: black;
+    }
 }
 </style>
