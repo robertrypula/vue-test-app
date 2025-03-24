@@ -1,16 +1,19 @@
 <script setup>
 // https://github.com/nuxt/content/issues/2593
 const { data: blogPostList } = await useAsyncData('blogPostList', () => {
-    // return queryContent('/blog').find()
+    return queryContent('/blog').find()
 })
+
+/*
+    <ContentQuery :path="$route.path" find="one" v-slot="{ data }">
+        <pre>data</pre>
+    </ContentQuery> -->
+*/
 </script>
 
 <template>
     <div class="container">
-
-        <ContentQuery :path="$route.path" find="one" v-slot="{ data }">
-            <pre>data</pre>
-        </ContentQuery>
+        TEST
         <pre>{{ blogPostList }}</pre>
 
         <section class="articles">
