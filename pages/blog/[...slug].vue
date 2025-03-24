@@ -1,19 +1,16 @@
 <script setup>
-const { path } = useRoute()
+const slug = useRoute().params.slug
 
-// https://github.com/nuxt/content/issues/2593
-console.log(path);
-
-const { data: blogPost } = await useAsyncData(`content-${path}`, () => {
-    return queryContent().where({ _path: path }).findOne()
+const { data: blogPost } = await useAsyncData(`blog-${slug}`, () => {
+  return queryCollection('blog').path(`/blog/${slug}`).first()
 })
 </script>
 
 <template>
     <main v-if="blogPost">  
-        {{ blogPost.title }}
-
-        <BlogPostMeta :author="blogPost.author" :date="blogPost.dates.published" color="dark" />
+        <div>
+            {{ blogPost.author }}
+        </div>
 
         <div class="container">
             <section class="articles">
@@ -21,7 +18,7 @@ const { data: blogPost } = await useAsyncData(`content-${path}`, () => {
                     <section class="blog-post-card card article">
                         <div class="card-content">
                             <div class="content article-body is-size-5">
-                                <ContentDoc />
+                                <ContentRenderer :value="blogPost" />
                             </div>
                         </div>
                     </section>

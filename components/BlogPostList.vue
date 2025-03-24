@@ -1,32 +1,20 @@
 <script setup>
-// https://github.com/nuxt/content/issues/2593
-const { data: blogPostList } = await useAsyncData('blogPostList', () => {
-    return queryContent('/blog').find()
-})
-
-/*
-    <ContentQuery :path="$route.path" find="one" v-slot="{ data }">
-        <pre>data</pre>
-    </ContentQuery> -->
-*/
+const blogPostList = await queryCollection('blog').all()
 </script>
 
 <template>
     <div class="container">
-        TEST
-        <pre>{{ blogPostList }}</pre>
-
         <section class="articles">
             <div class="column is-8 is-offset-2">
-                <div v-for="blogPost in blogPostList" :key="blogPost._path" class="card article">
-                    <NuxtLink :to="blogPost._path">
+                <div v-if="blogPostList" v-for="blogPost in blogPostList" :key="blogPost.path" class="card article">
+                    <NuxtLink :to="blogPost.path">
                         <section class="blog-post-card card article">
                             <div class="media">
                                 <div class="media-content has-text-centered">
                                     <h3 class="title article-title has-text-weight-bold">
                                         {{ blogPost.title }}
                                     </h3>
-                                    <BlogPostMeta :author="blogPost.author" :date="blogPost.dates.published" />
+                                    <BlogPostMeta :author="blogPost.meta.author" :date="blogPost.meta.dates.published" />
                                 </div>
                             </div>
                             <div class="card-content">
