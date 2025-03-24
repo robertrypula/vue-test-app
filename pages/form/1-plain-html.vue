@@ -1,30 +1,29 @@
-<script>
-export default {
-    data() {
-        return {
-            categories: [
-                'sustainability',
-                'nature',
-                'animal welfare',
-                'housing',
-                'education',
-                'food',
-                'community'
-            ],
-            event: {
-                category: '',
-                title: '',
-                description: '',
-                location: '',
-                pets: 1,
-                extras: {
-                    catering: false,
-                    music: false
-                }
-            }
-        }
+<script setup lang="ts">
+definePageMeta({
+  middleware: ['auth-check']
+})
+
+const categories = ref<string[]>([
+    'sustainability',
+    'nature',
+    'animal welfare',
+    'housing',
+    'education',
+    'food',
+    'community'
+]);
+
+const event = reactive({
+    category: '',
+    title: '',
+    description: '',
+    location: '',
+    pets: 1,
+    extras: {
+        catering: false,
+        music: false
     }
-}
+});
 </script>
 
 <template>

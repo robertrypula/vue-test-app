@@ -4,14 +4,15 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
 
     modules: [
-        '@nuxt/content',
-        '@nuxt/eslint',
-        '@nuxt/ui',
-        '@nuxt/icon',
-        '@nuxt/fonts',
-        '@nuxt/test-utils',
-        '@vee-validate/nuxt',
-        '@pinia/nuxt'
+      '@nuxt/content',
+      '@nuxt/eslint',
+      '@nuxt/ui',
+      '@nuxt/icon',
+      '@nuxt/fonts',
+      '@nuxt/test-utils',
+      '@vee-validate/nuxt',
+      '@pinia/nuxt',
+      '@vueuse/nuxt'
     ],
 
     content: {
