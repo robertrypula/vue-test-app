@@ -26,6 +26,16 @@
             to="/form/lazy-validation-login">
             Form/lazy-validation-login
         </NuxtLink>
+        |
+        <NuxtLink class="link" :class="{ current: $route.path === '/pokemon-api' }"
+            to="/pokemon-api">
+            pokemon-api
+        </NuxtLink>
+        |
+        <NuxtLink class="link" :class="{ current: $route.path === '/blog' }"
+            to="/blog">
+            BLOG
+        </NuxtLink>
     </nav>
 
     <pre>

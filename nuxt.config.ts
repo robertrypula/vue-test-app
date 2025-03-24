@@ -12,5 +12,11 @@ export default defineNuxtConfig({
         '@nuxt/test-utils',
         '@vee-validate/nuxt',
         '@pinia/nuxt'
-    ]
+    ],
+
+    content: {
+        highlight: {
+            theme: 'github-light'
+        }
+    }
 })
