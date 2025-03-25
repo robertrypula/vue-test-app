@@ -2,6 +2,8 @@
 import { collection, deleteDoc, doc } from 'firebase/firestore'
 
 const db = useFirestore()
+const user = useCurrentUser()
+const auth = useFirebaseAuth()
 
 // Firebase way
 /*
@@ -27,6 +29,13 @@ const deletePost = async (id: string) => {
 
 <template>
     <div>
+        <h1>FirebaseAuth</h1>
+
+        <pre>{{ user }}</pre>
+        <pre>{{ auth }}</pre>
+        
+        <hr>
+
         <h1>Firebase</h1>
 
         <h2>VueFire way (simpler)</h2>

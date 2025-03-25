@@ -23,6 +23,19 @@ export default defineNuxtConfig({
     },
 
     vuefire: {
+        auth: {
+            enabled: true
+        },
+        /*
+        appCheck: {
+            // Allows you to use a debug token in development
+            debug: process.env.NODE_ENV !== 'production',
+            isTokenAutoRefreshEnabled: true,
+            provider: 'ReCaptchaV3',
+            // Find the instructions in the Firebase documentation, link above
+            // key: '...',
+        },
+        */
         config: {
             apiKey: '',
             authDomain: '',
