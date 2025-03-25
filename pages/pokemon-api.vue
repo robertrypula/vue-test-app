@@ -1,19 +1,60 @@
 <script setup lang="ts">
-const data = await $fetch('/api/snorlax')
 const pokemonName = ref('pikachu');
+const pokemons = ref<string[]>([
+    'bulbasaur',
+    'ivysaur',
+    'venusaur',
+    'charmander',
+    'charmeleon',
+    'charizard',
+    'squirtle',
+    'wartortle',
+    'blastoise',
+    'caterpie',
+    'metapod',
+    'butterfree',
+    'weedle',
+    'kakuna',
+    'beedrill',
+    'pidgey',
+    'pidgeotto',
+    'pidgeot',
+    'pikachu',
+    'rattata',
+    'raticate',
+    'snorlax'
+]);
+
+const id = ref(0);
+const name = ref('');
+const sprite = ref('');
 
 const getPokemon = async () => {
-    const pokemon = await $fetch(`/api/${pokemonName.value}`);
+    try {
+        const pokemon = await $fetch(`/api/${pokemonName.value}`);
 
-    console.log(pokemon)
+        id.value = pokemon.id;
+        name.value = pokemon.name;
+        sprite.value = pokemon.sprite;
+    } catch (error) {
+        alert('Not found!');
+    }
 }
 </script>
 
 <template>
-    <input v-model="pokemonName" />
-    <button @click="getPokemon">Get Pokemon</button>
+    <div>
+        <span>...or input: </span>
+        <BaseSelect v-model="pokemonName" label="Select a pokemon via select: " :options="pokemons" />
+    </div>
+    <div>
+        <BaseInput v-model="pokemonName" label="...or input: " />
+    </div>
+    <div>
+        <button @click="getPokemon">...and click here find it!</button>
+    </div>
 
-    <p>{{ data.id }}</p>
-    <p>{{ data.name }}</p>
-    <img :src="data.sprite" alt="pokemon sprite">
+    <p>{{ id }}</p>
+    <p>{{ name }}</p>
+    <img :src="sprite" alt="pokemon sprite">
 </template>
