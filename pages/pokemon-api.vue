@@ -44,11 +44,10 @@ const getPokemon = async () => {
 
 <template>
     <div>
-        <span>...or input: </span>
-        <BaseSelect v-model="pokemonName" label="Select a pokemon via select: " :options="pokemons" />
+        <BaseSelect v-model="pokemonName" label="Select a pokemon via select " :options="pokemons" />
     </div>
     <div>
-        <BaseInput v-model="pokemonName" label="...or input: " />
+        <BaseInput v-model="pokemonName" label="...or input " />
     </div>
     <div>
         <button @click="getPokemon">...and click here find it!</button>
