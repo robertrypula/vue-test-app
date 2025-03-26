@@ -1,4 +1,8 @@
 <template>
+    <div style="background-color: lightgray; padding: 8px; margin-bottom: 8px;">
+        Source code: <a href="https://github.com/robertrypula/vue-test-app" target="_blank">https://github.com/robertrypula/vue-test-app</a>
+    </div>
+
     <div>
         <NuxtLink class="link" :class="{ current: $route.path === '/' }" to="/">
             Home
@@ -50,6 +54,11 @@
         <NuxtLink class="link" :class="{ current: $route.path === '/firebase/new' }"
             to="/firebase/new">
             Firebase new
+        </NuxtLink>
+        |
+        <NuxtLink class="link" :class="{ current: $route.path === '/firebase/auth' }"
+            to="/firebase/auth">
+            AUTH
         </NuxtLink>
     </div>
 
