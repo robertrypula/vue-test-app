@@ -29,7 +29,7 @@ const deletePost = async (id: string) => {
 
 <template>
     <div>
-        <h1>FirebaseAuth</h1>
+        <h1>FirebaseAuth!!!!!!!!!!!</h1>
 
         <pre>{{ user }}</pre>
         <pre>{{ auth }}</pre>
