@@ -16,6 +16,8 @@ export default defineNuxtConfig({
         'nuxt-vuefire'
     ],
 
+    css: ['~/assets/css/main.css'],
+
     colorMode: {
         preference: 'dark',
     },

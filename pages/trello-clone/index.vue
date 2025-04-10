@@ -4,9 +4,24 @@ const boardStore = useBoardStore()
 </script>
 
 <template>
-    <h1>Trello Clone!</h1>
+    <div class="trello">
+        <h1>{{ boardStore.board.name }}</h1>
 
-    <div>
-        <pre>{{ boardStore.board }}</pre>
+        <UContainer v-for="column in boardStore.board.columns" :key="column.name">
+            <h2>{{ column.name }}</h2>
+
+            <div v-for="task in column.tasks" :key="task.id">
+                <UCard>
+                    <strong>{{ task.name }}</strong>
+                    <p>{{ task.description }}</p>
+                </UCard>
+            </div>
+        </UContainer>
     </div>
 </template>
+
+<style>
+.trello {
+    background-color: lightblue;
+}
+</style>
