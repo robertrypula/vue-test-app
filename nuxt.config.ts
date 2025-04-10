@@ -16,6 +16,10 @@ export default defineNuxtConfig({
         'nuxt-vuefire'
     ],
 
+    colorMode: {
+        preference: 'dark',
+    },
+
     content: {
         highlight: {
             theme: 'github-light'

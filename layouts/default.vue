@@ -10,6 +10,13 @@
             Home
         </NuxtLink>
     </div>
+
+    <div>
+        <NuxtLink class="link" :class="{ current: $route.path === '/trello-clone' }" to="/trello-clone">
+            Trello Clone!
+        </NuxtLink>
+    </div>
+
     <div>
         <NuxtLink class="link" :class="{ current: $route.path === '/form/1-plain-html' }" to="/form/1-plain-html">
             Form/1-plain-html
