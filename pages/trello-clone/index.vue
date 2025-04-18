@@ -1,27 +1,46 @@
 <script setup lang="ts">
-const boardStore = useBoardStore()
+definePageMeta({
+  layout: 'full'
+})
 
+const boardStore = useBoardStore()
+const newColumnName = ref('');
+
+function addColumn() {
+    boardStore.addColumn(newColumnName.value);
+    newColumnName.value = '';
+}
 </script>
 
 <template>
-    <div class="trello">
-        <h1>{{ boardStore.board.name }}</h1>
+    <div class="trello bg-emerald-500">
+        <h1 class="mb-4">{{ boardStore.board.name }}</h1>
 
-        <UContainer v-for="column in boardStore.board.columns" :key="column.name">
-            <h2>{{ column.name }}</h2>
-
-            <div v-for="task in column.tasks" :key="task.id">
-                <UCard>
-                    <strong>{{ task.name }}</strong>
-                    <p>{{ task.description }}</p>
-                </UCard>
-            </div>
+        <UContainer class="container p-4 mb-4">
+            <UCard class="mb-4">
+                <UInput 
+                    placeholder="+ Add new column" 
+                    icon="i-heroicons-plus-circle-solid"
+                    v-model="newColumnName"
+                    @keyup.enter="addColumn"
+                />
+            </UCard>
         </UContainer>
+
+        <div class="container-wrapper">
+            <TrelloColumn 
+                v-for="(column, columnIndex) in boardStore.board.columns" 
+                :key="column.id" 
+                class="container p-4 mb-4" 
+                :column="column"
+                :columnIndex="columnIndex"
+            />
+        </div>
     </div>
 </template>
 
 <style>
-.trello {
-    background-color: lightblue;
+.container {
+    background-color: lightgray;
 }
 </style>
