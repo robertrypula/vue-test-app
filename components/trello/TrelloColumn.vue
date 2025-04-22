@@ -10,11 +10,16 @@ defineProps({
     }
 })
 
-const boardStore = useBoardStore()
+const router = useRouter();
+const boardStore = useBoardStore();
 const editNameState = ref(false);
 
 function deleteColumn(columnIndex: number) {
     boardStore.deleteColumn(columnIndex);
+}
+
+function goToTask(taskId: string) {
+    router.push(`/trello-clone/${taskId}`);
 }
 </script>
 
@@ -30,7 +35,13 @@ function deleteColumn(columnIndex: number) {
             <UButton icon="i-heroicons-trash" color="error" @click="deleteColumn(columnIndex)" />
         </div>
 
-        <UCard v-if="column.tasks.length" v-for="task in column.tasks" :key="task.id" class="mb-4">
+        <UCard 
+            v-if="column.tasks.length" 
+            v-for="task in column.tasks" 
+            :key="task.id" 
+            class="mb-4"
+            @click="goToTask(task.id)"
+        >
             <strong>{{ task.name }}</strong>
             <p>{{ task.description }}</p>
         </UCard>

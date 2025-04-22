@@ -11,13 +11,31 @@ export const useBoardStore = defineStore('boardStore', () =>{
       });
    }
 
+   const getTask = computed(() => {
+      return (taskId: string) => {
+         for (const column of board.value.columns) {
+            const task = column.tasks.find(task => task.id === taskId);
+
+            if (task) {
+               return task;
+            }
+         }
+      }
+   });
+
    function deleteColumn(columnIndex: number) {
       board.value.columns.splice(columnIndex, 1);
    }
    
    return {
-        board,
-        addColumn,
-        deleteColumn
+      // state
+      board,
+
+      // getters
+      getTask,
+
+      // actions
+      addColumn,
+      deleteColumn
    }
 });
