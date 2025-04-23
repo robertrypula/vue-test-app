@@ -32,6 +32,10 @@ function closeModal() {
 
         <h1 class="mb-4 trello-board-name">{{ boardStore.board.name }}</h1>
 
+        <p class="mb-4">
+            Try to drag and drop columns and tasks :)
+        </p>
+
         <div class="mb-4">
             <UInput 
                 placeholder="+ Add new column" 
