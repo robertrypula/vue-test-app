@@ -31,17 +31,16 @@ function addTask() {
     newTaskName.value = ''
 }
 
-function dropItem(event: DragEvent, toColumnIndex) {
+function dropItem(event: DragEvent, { toTaskIndex, toColumnIndex }) {
     const type = event.dataTransfer.getData('type');
     const fromColumnIndex = Number(event.dataTransfer.getData('from-column-index'));
 
-    console.log('dropItem', { type, fromColumnIndex, toColumnIndex });
-    
     if (type === 'task') {
         const fromTaskIndex = Number(event.dataTransfer.getData('from-task-index'));
 
         boardStore.moveTask({
-            taskIndex: fromTaskIndex,
+            fromTaskIndex,
+            toTaskIndex,
             fromColumnIndex,
             toColumnIndex
         });
@@ -76,7 +75,7 @@ function pickColumn(event: DragEvent, fromColumnIndex) {
         @dragstart.self="pickColumn($event, columnIndex)"
         @dragenter.prevent 
         @dragover.prevent 
-        @drop.stop="dropItem($event, columnIndex)"
+        @drop.stop="dropItem($event, { toColumnIndex: columnIndex })"
     >
         <div class="mb-4">
             <h4 v-if="!editNameState" class="mb-4">{{ column.name }}</h4>
@@ -96,6 +95,7 @@ function pickColumn(event: DragEvent, fromColumnIndex) {
                 fromTaskIndex: taskIndex,
                 fromColumnIndex: columnIndex,
             })"
+            @drop.stop="dropItem($event, { toTaskIndex: taskIndex, toColumnIndex: columnIndex })"
             :key="task.id" 
             class="mb-4"
             @click="goToTask(task.id)"
@@ -109,7 +109,6 @@ function pickColumn(event: DragEvent, fromColumnIndex) {
 
         <UInput 
             placeholder="+ Add new task" 
-            icon="i-heroicons-plus-circle-solid"
             v-model="newTaskName"
             @keyup.enter="addTask"
         />

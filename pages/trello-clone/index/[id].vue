@@ -16,19 +16,19 @@ function deleteTask(taskId: string) {
 <template>
     <div v-if="task">
         <div class="mb-4">
-            <UButton icon="i-heroicons-trash" color="error" @click="deleteTask(task.id)">
-                Delete task
-            </UButton>
-        </div>
-        <div class="mb-4">
-            <UFormField  label="Name">
-                <UInput v-model="task.name" />
+            <UFormField label="Name">
+                <UInput v-model="task.name" class="w-full" />
             </UFormField >
         </div>
         <div class="mb-4">
             <UFormField  label="Description">
-                <UTextarea v-model="task.description"></UTextarea>
+                <UTextarea v-model="task.description" class="w-full"></UTextarea>
             </UFormField >
+        </div>
+        <div class="mb-4">
+            <UButton icon="i-heroicons-trash" color="error" @click="deleteTask(task.id)">
+                Delete task
+            </UButton>
         </div>
     </div>
 

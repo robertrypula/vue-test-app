@@ -1,44 +1,88 @@
 {
-    "name": "task-board",
+    "name": "My trello board",
     "columns": [
         {
-            "id": "47cbbe1b-1bf4-41c0-a42c-33e566042c03",
-            "name": "in-progress",
+            "id": "b4df27ce-fa1e-401a-8e54-4b685c6ad95b",
+            "name": "TODO",
             "tasks": [
                 {
-                    "id": "a9f5931e-44f7-46fe-94c5-d489af213b37",
-                    "name": "Task numer 1",
+                    "id": "6a3b56dc-f21a-4519-b459-53041b4cb2f6",
+                    "name": "Setup local environment",
+                    "description": "Setup local environment for the project"
+                },
+                {
+                    "id": "63676cf4-85bd-4879-ad53-02ba530f8b40",
+                    "name": "Install all dependencies",
+                    "description": "Install all dependencies for the project"
+                },
+                {
+                    "id": "77b1ecd9-63e3-4934-96b2-d0b6dddfc6f4",
+                    "name": "Create basic styles for the buttons",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                {
+                    "id": "99077b4c-01b9-4f19-94b7-19432b60eb0d",
+                    "name": "Create basic styles for the buttons",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore."
+                }
+            ]
+        },
+        {
+            "id": "1dba2ced-4497-43b1-aa02-16e1d3fba953",
+            "name": "In progress",
+            "tasks": [
+                {
+                    "id": "f5f213c1-b823-4366-9c1f-aab8172bdb69",
+                    "name": "Deployment to production",
                     "description": ""
                 },
                 {
-                    "id": "10d14a3a-af6b-4cef-bae9-71fc0b8d71cc",
-                    "name": "Task numer 2",
-                    "description": ""
-                },
-                {
-                    "id": "8d65c28b-9e3a-4164-a329-9cc013cd134c",
-                    "name": "Task numer 3",
-                    "description": ""
-                },
-                {
-                    "id": "9f8924ef-435f-4d70-b7b0-3bf985e3a36d",
-                    "name": "Task numer 4",
+                    "id": "6f4bdb52-fa98-456c-b597-059fc55558ef",
+                    "name": "Test PROD environment",
                     "description": ""
                 }
             ]
         },
         {
-            "id": "4e58f85a-2409-4ecc-994e-5e478782ccee",
-            "name": "completed",
+            "id": "89d30e77-651a-4f4a-943a-626249d2cb26",
+            "name": "Code review",
+            "tasks": [
+            ]
+        },
+        {
+            "id": "52116cd6-ceb9-4f61-9933-8572e3f34ac3",
+            "name": "Ready to test",
+            "tasks": [
+            ]
+        },
+        {
+            "id": "8d815a1b-e740-43e4-b11f-9caaea55ba25",
+            "name": "QA",
             "tasks": [
                 {
-                    "id": "cfd7f57f-45d5-4624-8d4d-b7a51860e167",
-                    "name": "Task numer 5",
+                    "id": "9dc7589b-c65a-413c-9c2c-b216b16291df",
+                    "name": "Test PDP",
                     "description": ""
                 },
                 {
-                    "id": "9bddeded-606b-4546-952c-baa9f6cd2333",
-                    "name": "Task numer 6",
+                    "id": "126b2bc6-9513-450d-b7b4-296e9f842d21",
+                    "name": "Test checkout",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "00b30c7e-44e7-4150-9ba0-de48cbbf32cb",
+            "name": "Completed",
+            "tasks": [
+                {
+                    "id": "4ba6ee13-7cec-4119-bb70-5e12dc12a060",
+                    "name": "Cypress tests",
+                    "description": ""
+                },
+                {
+                    "id": "d67cb909-2358-43ea-8adc-747429670e36",
+                    "name": "Implement new checkout",
                     "description": ""
                 }
             ]

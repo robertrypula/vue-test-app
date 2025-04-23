@@ -6,7 +6,7 @@ export const useBoardStore = defineStore('boardStore', () => {
    const board = useStorage('board', boardData);
 
    function addColumn(columnName: string) {
-      board.value.columns.unshift({
+      board.value.columns.push({
          id: uuid(),
          name: columnName,
          tasks: []
@@ -14,7 +14,7 @@ export const useBoardStore = defineStore('boardStore', () => {
    }
 
    function addTask({ columnIndex, taskName }) {
-      board.value.columns[columnIndex].tasks.unshift({
+      board.value.columns[columnIndex].tasks.push({
          id: uuid(),
          name: taskName,
          description: '',
@@ -34,10 +34,10 @@ export const useBoardStore = defineStore('boardStore', () => {
       }
    }
 
-   function moveTask({ taskIndex, fromColumnIndex, toColumnIndex }) {
-      const task = board.value.columns[fromColumnIndex].tasks.splice(taskIndex, 1)[0];
+   function moveTask({ fromTaskIndex, toTaskIndex, fromColumnIndex, toColumnIndex }) {
+      const task = board.value.columns[fromColumnIndex].tasks.splice(fromTaskIndex, 1)[0];
 
-      board.value.columns[toColumnIndex].tasks.push(task);
+      board.value.columns[toColumnIndex].tasks.splice(toTaskIndex, 0, task);
    }
 
    

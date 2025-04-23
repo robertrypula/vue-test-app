@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 definePageMeta({
   layout: 'full'
 })
@@ -24,26 +23,28 @@ function closeModal() {
 </script>
 
 <template>
-    <div class="trello bg-emerald-500">
+    <div class="trello bg-emerald-500 p-8">
         <div v-show="isModalOpen" class="modal-container">
             <div>
+                <div class="text-right">
+                    <UButton @click="closeModal">Close modal</UButton>
+                </div>
+
                 <NuxtPage :key="router.fullPath" />
-                <UButton @click="closeModal">Close modal</UButton>
             </div>
         </div>
 
-        <h1 class="mb-4">{{ boardStore.board.name }}</h1>
+        <h1 class="mb-4 trello-board-name">{{ boardStore.board.name }}</h1>
 
-        <div class="p-4 mb-4">
+        <div class="mb-4">
             <UInput 
                 placeholder="+ Add new column" 
-                icon="i-heroicons-plus-circle-solid"
                 v-model="newColumnName"
                 @keyup.enter="addColumn"
             />
         </div>
 
-        <div class="trello-column-wrapper p-4">
+        <div class="trello-column-wrapper">
             <TrelloColumn 
                 v-for="(column, columnIndex) in boardStore.board.columns" 
                 :key="column.id" 
@@ -56,8 +57,18 @@ function closeModal() {
 </template>
 
 <style>
-.container {
-    background-color: lightgray;
+.trello-board-name {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.trello-column-wrapper {
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.trello-column-wrapper * {
+    white-space: wrap;
 }
 
 .trello-column-wrapper > * {
@@ -78,7 +89,7 @@ function closeModal() {
 
 .modal-container > div {
     position: absolute;
-    width: 800px;
+    width: 600px;
     max-width: 100%;
     padding: 32px;
     top: 50%;
