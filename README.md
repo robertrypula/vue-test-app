@@ -2,7 +2,7 @@
 
 You can check the app here:
 
-[https://phenomenal-stroopwafel-a38657.netlify.app/](https://phenomenal-stroopwafel-a38657.netlify.app/)
+[https://rob-vue-test-app.netlify.app](https://rob-vue-test-app.netlify.app)
 
 It's hosted on Netlify
 

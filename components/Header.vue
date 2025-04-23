@@ -6,7 +6,7 @@
         <div style="background-color: lightgray; padding: 8px; margin-bottom: 8px;">
             Source code: <a href="https://github.com/robertrypula/vue-test-app" target="_blank">https://github.com/robertrypula/vue-test-app</a>
             <br/>
-            Live app here: <a href="https://phenomenal-stroopwafel-a38657.netlify.app/" target="_blank">https://phenomenal-stroopwafel-a38657.netlify.app/</a>
+            Live app here: <a href="https://rob-vue-test-app.netlify.app" target="_blank">https://rob-vue-test-app.netlify.app</a>
         </div>
 
         <div>

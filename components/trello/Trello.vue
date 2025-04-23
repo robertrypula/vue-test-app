@@ -5,7 +5,7 @@ const router = useRouter();
 const newColumnName = ref('');
 
 const isModalOpen = computed(() => {
-    return route.name === 'trello-clone-index-id';
+    return route.name === 'index-id';
 })
 
 function addColumn() {
@@ -14,7 +14,7 @@ function addColumn() {
 }
 
 function closeModal() {
-    router.push('/trello-clone');
+    router.push('/');
 }
 </script>
 

@@ -20,7 +20,7 @@ function deleteColumn(columnIndex: number) {
 }
 
 function goToTask(taskId: string) {
-    router.push(`/trello-clone/${taskId}`);
+    router.push(`/${taskId}`);
 }
 
 function addTask() {

@@ -8,8 +8,11 @@ const task = computed(() => {
 });
 
 function deleteTask(taskId: string) {
+    if (!confirm('Are you sure you want to delete this task?')) {
+        return;
+    }
     boardStore.deleteTask(taskId);
-    router.push('/trello-clone');
+    router.push('/');
 }
 </script>
 
