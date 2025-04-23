@@ -1,8 +1,4 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'full'
-})
-
 const boardStore = useBoardStore()
 const route = useRoute();
 const router = useRouter();

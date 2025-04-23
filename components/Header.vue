@@ -16,8 +16,8 @@
         </div>
 
         <div>
-            <NuxtLink class="link" :class="{ current: $route.path === '/trello-clone' }" to="/trello-clone">
-                Trello Clone!
+            <NuxtLink class="link" :class="{ current: $route.path === '/counter' }" to="/counter">
+                Counter
             </NuxtLink>
         </div>
 
