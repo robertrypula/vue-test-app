@@ -31,32 +31,52 @@ function addTask() {
     newTaskName.value = ''
 }
 
-function dropTask(event: DragEvent, toColumnIndex) {
-    console.log('Drop event:', event);
+function dropItem(event: DragEvent, toColumnIndex) {
+    const type = event.dataTransfer.getData('type');
     const fromColumnIndex = Number(event.dataTransfer.getData('from-column-index'));
-    const fromTaskIndex = Number(event.dataTransfer.getData('from-task-index'));
 
-    boardStore.moveTask({
-        taskIndex: fromTaskIndex,
-        fromColumnIndex,
-        toColumnIndex
-    });
+    console.log('dropItem', { type, fromColumnIndex, toColumnIndex });
+    
+    if (type === 'task') {
+        const fromTaskIndex = Number(event.dataTransfer.getData('from-task-index'));
+
+        boardStore.moveTask({
+            taskIndex: fromTaskIndex,
+            fromColumnIndex,
+            toColumnIndex
+        });
+    } else if (type === 'column') {
+        boardStore.moveColumn({
+            fromColumnIndex,
+            toColumnIndex
+        });
+    }
 }
 
 function pickTask(event: DragEvent, { fromColumnIndex, fromTaskIndex }) {
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.dropEffect = 'move';
+    event.dataTransfer.setData('type', 'task');
     event.dataTransfer.setData('from-column-index', fromColumnIndex);
     event.dataTransfer.setData('from-task-index', fromTaskIndex);
+}
+
+function pickColumn(event: DragEvent, fromColumnIndex) {
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.dropEffect = 'move';
+    event.dataTransfer.setData('type', 'column');
+    event.dataTransfer.setData('from-column-index', fromColumnIndex);
 }
 </script>
 
 <template>
     <div
         class="trello-column p-4 mb-4" 
+        draggable="true"
+        @dragstart.self="pickColumn($event, columnIndex)"
         @dragenter.prevent 
         @dragover.prevent 
-        @drop.stop="dropTask($event, columnIndex)"
+        @drop.stop="dropItem($event, columnIndex)"
     >
         <div class="mb-4">
             <h4 v-if="!editNameState" class="mb-4">{{ column.name }}</h4>
@@ -83,11 +103,9 @@ function pickTask(event: DragEvent, { fromColumnIndex, fromTaskIndex }) {
             <strong>{{ task.name }}</strong>
             <p>{{ task.description }}</p>
         </UCard>
-        <template v-else>
-            <UCard class="mb-4">
-                <p>No tasks in this column</p>
-            </UCard>
-        </template>
+        <div v-else class="mb-4">
+            <p>No tasks in this column</p>
+        </div>
 
         <UInput 
             placeholder="+ Add new task" 
