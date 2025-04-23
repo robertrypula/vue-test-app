@@ -34,22 +34,20 @@ function closeModal() {
 
         <h1 class="mb-4">{{ boardStore.board.name }}</h1>
 
-        <UContainer class="container p-4 mb-4">
-            <UCard class="mb-4">
-                <UInput 
-                    placeholder="+ Add new column" 
-                    icon="i-heroicons-plus-circle-solid"
-                    v-model="newColumnName"
-                    @keyup.enter="addColumn"
-                />
-            </UCard>
-        </UContainer>
+        <div class="p-4 mb-4">
+            <UInput 
+                placeholder="+ Add new column" 
+                icon="i-heroicons-plus-circle-solid"
+                v-model="newColumnName"
+                @keyup.enter="addColumn"
+            />
+        </div>
 
-        <div class="container-wrapper">
+        <div class="trello-column-wrapper p-4">
             <TrelloColumn 
                 v-for="(column, columnIndex) in boardStore.board.columns" 
                 :key="column.id" 
-                class="container p-4 mb-4" 
+                class="p-4 mr-4" 
                 :column="column"
                 :columnIndex="columnIndex"
             />
@@ -60,6 +58,12 @@ function closeModal() {
 <style>
 .container {
     background-color: lightgray;
+}
+
+.trello-column-wrapper > * {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
 }
 
 .modal-container {

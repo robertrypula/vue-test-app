@@ -52,8 +52,8 @@ function pickTask(event: DragEvent, { fromColumnIndex, fromTaskIndex }) {
 </script>
 
 <template>
-    <UContainer 
-        class="container p-4 mb-4" 
+    <div
+        class="trello-column p-4 mb-4" 
         @dragenter.prevent 
         @dragover.prevent 
         @drop.stop="dropTask($event, columnIndex)"
@@ -95,5 +95,11 @@ function pickTask(event: DragEvent, { fromColumnIndex, fromTaskIndex }) {
             v-model="newTaskName"
             @keyup.enter="addTask"
         />
-    </UContainer>
+    </div>
 </template>
+
+<style>
+.trello-column {
+    background-color: lightgray;
+}
+</style>
