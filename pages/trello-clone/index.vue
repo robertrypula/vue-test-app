@@ -10,7 +10,6 @@ const router = useRouter();
 const newColumnName = ref('');
 
 const isModalOpen = computed(() => {
-    console.log('route', route.name);
     return route.name === 'trello-clone-index-id';
 })
 

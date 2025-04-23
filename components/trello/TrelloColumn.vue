@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
     column: {
         type: Object,
         required: true
@@ -13,6 +13,7 @@ defineProps({
 const router = useRouter();
 const boardStore = useBoardStore();
 const editNameState = ref(false);
+const newTaskName = ref('');
 
 function deleteColumn(columnIndex: number) {
     boardStore.deleteColumn(columnIndex);
@@ -20,6 +21,14 @@ function deleteColumn(columnIndex: number) {
 
 function goToTask(taskId: string) {
     router.push(`/trello-clone/${taskId}`);
+}
+
+function addTask() {
+    boardStore.addTask({ 
+        taskName: newTaskName.value,
+        columnIndex: props.columnIndex,
+    });
+    newTaskName.value = ''
 }
 </script>
 
@@ -50,5 +59,12 @@ function goToTask(taskId: string) {
                 <p>No tasks in this column</p>
             </UCard>
         </template>
+
+        <UInput 
+            placeholder="+ Add new task" 
+            icon="i-heroicons-plus-circle-solid"
+            v-model="newTaskName"
+            @keyup.enter="addTask"
+        />
     </UContainer>
 </template>

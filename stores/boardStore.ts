@@ -1,16 +1,39 @@
-import boarData from '../data/board.json';
+import boardData from '../data/board.json';
+import { v4 as uuid } from 'uuid';
 import { useStorage } from '@vueuse/core';
 
-export const useBoardStore = defineStore('boardStore', () =>{
-   const board = useStorage('board', boarData);
+export const useBoardStore = defineStore('boardStore', () => {
+   const board = useStorage('board', boardData);
 
    function addColumn(columnName: string) {
       board.value.columns.unshift({
+         id: uuid(),
          name: columnName,
          tasks: []
       });
    }
 
+   function addTask({ columnIndex, taskName }) {
+      board.value.columns[columnIndex].tasks.unshift({
+         id: uuid(),
+         name: taskName,
+         description: '',
+      });
+   }
+
+   function deleteTask(taskId) {
+      console.log(taskId, board.value.columns);
+
+      for (const column of board.value.columns) {
+         const taskIndex = column.tasks.findIndex(task => task.id === taskId);
+
+         if (taskIndex !== -1) {
+            column.tasks.splice(taskIndex, 1);
+            return;
+         }
+      }
+   }
+   
    const getTask = computed(() => {
       return (taskId: string) => {
          for (const column of board.value.columns) {
@@ -36,6 +59,8 @@ export const useBoardStore = defineStore('boardStore', () =>{
 
       // actions
       addColumn,
-      deleteColumn
+      deleteColumn,
+      addTask,
+      deleteTask
    }
 });
